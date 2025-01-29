@@ -10,7 +10,7 @@ const Login = () => {
     const onSubmitHandler = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post(backendUrl + '/api/admin/admin',{email,password})
+            const response = await axios.post(backendUrl + '/api/user/admin',{email,password})
             console.log(response)
         } catch (error) {
             
