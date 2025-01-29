@@ -18,7 +18,7 @@ const Add = () => {
     const [bestSeller, setBestSeller] = useState(false);
     const [sizes, setSizes] = useState([]);
 
-    const onSubmitHandler = async () => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
             const formData = new FormData()
@@ -69,7 +69,7 @@ const Add = () => {
             </div>
             <div className='w-full'>
                 <p className='mb-2'>Nombre del Producto</p>
-                <input onClick={(e)=>setName(e.target.value)} value={name} className='w-full max-w-[500px] px-3 py-2 bg-transparent' type="text" placeholder='Escriba aquí' required/>
+                <input onChange={(e)=>setName(e.target.value)} value={name} className='w-full max-w-[500px] px-3 py-2 bg-transparent' type="text" placeholder='Escriba aquí' required/>
             </div>
             <div className='w-full'>
                 <p className='mb-2'>Descripción del Producto</p>
@@ -100,25 +100,25 @@ const Add = () => {
             <div>
                 <p className='mb-2'>Tamaño del Producto</p>
                 <div className='flex gap-3 text-zinc-800'>
-                    <div onClick={()=>setSizes(prev => prev.includes("S") ? prev.filter( item => item !== "S" ) : [...prev])}>
-                        <p className={`${sizes.includes("S") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>S</p>
+                    <div onClick={()=>setSizes(prev => prev.includes("S") ? prev.filter( item => item !== "S" ) : [...prev, "S"])}>
+                        <p className={`${sizes.includes("S") ? "bg-pink-300" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>S</p>
                     </div>
-                    <div onClick={()=>setSizes(prev => prev.includes("M") ? prev.filter( item => item !== "M" ) : [...prev])}>
-                        <p className={`${sizes.includes("M") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>M</p>
+                    <div onClick={()=>setSizes(prev => prev.includes("M") ? prev.filter( item => item !== "M" ) : [...prev, "M"])}>
+                        <p className={`${sizes.includes("M") ? "bg-pink-300" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>M</p>
                     </div>
-                    <div onClick={()=>setSizes(prev => prev.includes("L") ? prev.filter( item => item !== "L" ) : [...prev])}>
-                        <p className={`${sizes.includes("L") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>L</p>
+                    <div onClick={()=>setSizes(prev => prev.includes("L") ? prev.filter( item => item !== "L" ) : [...prev, "L"])}>
+                        <p className={`${sizes.includes("L") ? "bg-pink-300" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>L</p>
                     </div>
-                    <div onClick={()=>setSizes(prev => prev.includes("XL") ? prev.filter( item => item !== "XL" ) : [...prev])}>
-                        <p className={`${sizes.includes("XL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XL</p>
+                    <div onClick={()=>setSizes(prev => prev.includes("XL") ? prev.filter( item => item !== "XL" ) : [...prev, "XL"])}>
+                        <p className={`${sizes.includes("XL") ? "bg-pink-300" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XL</p>
                     </div>
-                    <div onClick={()=>setSizes(prev => prev.includes("XXL") ? prev.filter( item => item !== "XXL" ) : [...prev])}>
-                        <p className={`${sizes.includes("XXL") ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XXL</p>
+                    <div onClick={()=>setSizes(prev => prev.includes("XXL") ? prev.filter( item => item !== "XXL" ) : [...prev, "XXL"])}>
+                        <p className={`${sizes.includes("XXL") ? "bg-pink-300" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>XXL</p>
                     </div>
                 </div>
             </div>
             <div className='flex gap-2 mt-2'>
-                <input onChange={() => setBestSeller(prev = !prev)} checked={bestSeller} type="checkbox" id='bestseller' />
+                <input onChange={() => setBestSeller(prev => !prev)} checked={bestSeller} type="checkbox" id='bestseller' />
                 <label className='cursor-pointer' htmlFor="bestseller">Agregar a más vendidos</label>
             </div>
             <button type="submit" className='w-28 py-3 mt-4 bg-gray-800 text-white'>AGREGAR</button>
